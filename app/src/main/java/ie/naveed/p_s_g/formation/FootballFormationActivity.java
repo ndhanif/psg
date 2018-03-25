@@ -40,7 +40,7 @@ public class FootballFormationActivity extends AppCompatActivity implements View
 
     private FPSTextureView mFPSTextureView;
     private RelativeLayout stage;
-    private String team;
+    private String bt;
 
     private Container mSparkContainer = new Container();
     private Container mMainContainer = new Container();
@@ -65,7 +65,7 @@ public class FootballFormationActivity extends AppCompatActivity implements View
 
         FootballFormationActivity.this.getSupportActionBar().setBackgroundDrawable(logo);
 
-        team = getIntent().getStringExtra("Sport");
+        bt = getIntent().getStringExtra("Sport");
 
 
 
@@ -99,12 +99,6 @@ public class FootballFormationActivity extends AppCompatActivity implements View
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
-                StringBuilder builder = new StringBuilder();
-
-
-
-
 
                 mMainContainer.removeChild(player);
                 StringBuilder str = new StringBuilder();
@@ -208,7 +202,7 @@ public class FootballFormationActivity extends AppCompatActivity implements View
         mFPSTextureView.tickStart();
         getSupportActionBar().setSubtitle("4-4-2");
         if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle(team);
+            getSupportActionBar().setTitle(bt);
         }
     }
 
@@ -224,12 +218,23 @@ public class FootballFormationActivity extends AppCompatActivity implements View
         playerSelected = (Button) v;
         final String tests;
 
-        Intent playerProfile = new Intent(FootballFormationActivity.this, PlayersActivity.class);
-        playerProfile.putExtra("bt", players.get(playerSelected).getText().toString());
-        //startActivityForResult(playerProfile, 1);
-        tests = players.get(playerSelected).getText().toString();
-        Toast.makeText(FootballFormationActivity.this, "this is"+" "+tests, Toast.LENGTH_SHORT).show();
-        Log.d("app","this is player"+tests);
+//        Intent playerProfile = new Intent(FootballFormationActivity.this, PlayersActivity.class);
+//        playerProfile.putExtra("bt", "Player " + playerSelected.getTag());
+//        playerProfile.putExtra("bt", players.get(playerSelected).getText().toString());
+//        startActivityForResult(playerProfile, 1);
+//        tests = players.get(playerSelected).getText().toString();
+//        Toast.makeText(FootballFormationActivity.this, "this is"+" "+tests, Toast.LENGTH_SHORT).show();
+
+        if (players.get(playerSelected).getText().toString().contains("Player")) {
+            Intent playerProfile = new Intent(FootballFormationActivity.this, PlayersActivity.class);
+            playerProfile.putExtra("bt", players.get(playerSelected).getText().toString());
+            startActivityForResult(playerProfile, 1);
+        } else {
+            //// TODO: 11/11/2016 show a user profile
+            String playerName = players.get(playerSelected).getText().toString();
+            MySingleton.getInstance().showToast(playerName);
+        }
+
 
 
     }
@@ -241,16 +246,11 @@ public class FootballFormationActivity extends AppCompatActivity implements View
         if (requestCode == 1 && resultCode == RESULT_OK) {
             String player = data.getStringExtra("player");
             String bt = data.getStringExtra("bt");
+            Log.i("naeedg", "player is name" + player + "bt name is" + bt);
+
             players.get(playerSelected).setText(player);
-
-
-
-
-
-
-        } else if (requestCode == 2 && resultCode == RESULT_OK) {
-            //finish();
-
+            float x = playerSelected.getX();
+            float y = playerSelected.getY();
 
         }
     }

@@ -22,8 +22,12 @@ import android.view.WindowManager;
 
 import ie.naveed.p_s_g.formation.FootballFormationActivity;
 import ie.naveed.p_s_g.formation.PlayerProfile;
+import ie.naveed.p_s_g.fragments.FreeKicks;
 import ie.naveed.p_s_g.fragments.Goals;
+import ie.naveed.p_s_g.fragments.Interceptions;
 import ie.naveed.p_s_g.fragments.Mainimage;
+import ie.naveed.p_s_g.fragments.Saves;
+import ie.naveed.p_s_g.fragments.ShotsBlocked;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -34,13 +38,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
 
 
 
@@ -99,7 +107,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.Goals) {
+
+        if (id == R.id.Home)
+        {
+            Intent intent = new Intent(MainActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+
+       else if (id == R.id.Goals) {
 
             fragment = new Goals();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -109,11 +124,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // Handle the camera action
         }
 
+
+
         else if (id == R.id.Saves) {
+
+            fragment = new Saves();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frament, fragment);
+            ft.commit();
 
 
 
         } else if (id == R.id.Free_Kicks) {
+
+            fragment = new FreeKicks();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frament, fragment);
+            ft.commit();
 
         } else if (id == R.id.Lineout) {
 
@@ -128,9 +155,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (id==R.id.Shots_Blocked)
         {
 
+            fragment = new ShotsBlocked();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frament, fragment);
+            ft.commit();
+
         }
         else if (id==R.id.Interceptions)
         {
+            fragment = new Interceptions();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frament, fragment);
+            ft.commit();
 
         }
 

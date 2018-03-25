@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">PSG</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -10,10 +10,6 @@
     <string name="formation">Formation</string>
     <string name="change">Change</string>
     <string name="emptySpace"></string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="football">Football</string>
     <string name="cricket">Cricket</string>
     <string name="rugby">Rugby</string>

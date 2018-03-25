@@ -22,20 +22,32 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
 
+
+        </activity>
+
+        <activity android:name=".SplashScreen">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>/>
         </activity>
 
 
-        <activity android:name=".ClipActivity"/>
-        <activity android:name=".formation.DreamTeam"/>
-        <activity android:name=".formation.FootballFormationActivity"/>
-        <activity android:name=".formation.PlayerProfile"/>
-        <activity android:name=".formation.PlayersActivity"/>
-        <activity android:name=".DreamTeam"/>
+
+
+        <activity android:name=".ClipActivity" />
+        <activity android:name=".formation.DreamTeam"
+            android:screenOrientation="portrait" />
+        <activity android:name=".formation.FootballFormationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".formation.PlayerProfile"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".formation.PlayersActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".DreamTeam"
+            android:screenOrientation="portrait"/>
 
 
 

@@ -71,6 +71,24 @@
 
     </string-array>
 
+    <string-array name="players_clare">
+        <item>Bonner</item>
+        <item>McGrath</item>
+        <item>Babb</item>
+        <item>Irwin</item>
+        <item>Phelan</item>
+        <item>Keane</item>
+        <item>Townsend</item>
+        <item>Houghton</item>
+        <item>Staunton</item>
+        <item>Sheridan</item>
+        <item>Coyne</item>
+        <item>Long</item>
+        <item>McClean</item>
+        <item>Ward</item>
+        <item>Randolph</item>
+    </string-array>
+
     <string-array name="menutennis">
         <item>Please choose</item>
         <item> </item>

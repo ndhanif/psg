@@ -1,11 +1,10 @@
 package ie.naveed.p_s_g.fragments;
 
+
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,28 +12,23 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import ie.naveed.p_s_g.ClipActivity;
 import ie.naveed.p_s_g.ItemData;
 import ie.naveed.p_s_g.ListViewAdapter;
 import ie.naveed.p_s_g.MainActivity;
 import ie.naveed.p_s_g.R;
-import ie.naveed.p_s_g.Scrolling;
 
 /**
- * Created by Diogo on 22/03/2018.
+ * A simple {@link Fragment} subclass.
  */
-
-public class Goals extends Fragment implements AdapterView.OnItemClickListener {
+public class ShotsBlocked extends Fragment implements AdapterView.OnItemClickListener {
 
     private ListView list;
     ImageView imageView;
-    Fragment fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,12 +37,11 @@ public class Goals extends Fragment implements AdapterView.OnItemClickListener {
 
         ((MainActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(logo);
 
-        View view = inflater.inflate(R.layout.goals, container, false);
+        View view = inflater.inflate(R.layout.fragment_shots_blocked, container, false);
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         list = (ListView) view.findViewById(R.id.listView);
         imageView = (ImageView) view.findViewById(R.id.imageView);
-
 
 
         Drawable team2logo = this.getResources().getDrawable(R.drawable.psglogo);
@@ -81,8 +74,6 @@ public class Goals extends Fragment implements AdapterView.OnItemClickListener {
 
     }
 
-
-
-
-
 }
+
+

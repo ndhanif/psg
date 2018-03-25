@@ -1,15 +1,19 @@
 package ie.naveed.p_s_g;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -35,198 +39,80 @@ import ie.naveed.p_s_g.util.UIUtil;
 
 public class DreamTeam extends AppCompatActivity implements View.OnClickListener {
 
-    private FPSTextureView mFPSTextureView;
     private RelativeLayout stage;
-    private String team;
-    private Boolean isDreamTeam;
-
-    private Container mSparkContainer = new Container();
-    private Container mMainContainer = new Container();
-    private RelativeLayout.LayoutParams lparams;
-    private float frameWidth, frameHeight;
-    private Bitmap baseSpriteBitmapB, spriteBitmapB;
-    private SpriteSheetDrawer spriteSheetDrawer;
+    private RelativeLayout.LayoutParams params;
+    private Button imageButton;
     private Map<Button, TextView> players;
     private Button playerSelected;
-
-
-
+    private float primordialX;
+    private int stageHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_football_formation);
+        setContentView(R.layout.activity_new_formation);
+        setTitle(R.string.app_name);
 
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        team = getIntent().getStringExtra("Sport");
-        isDreamTeam = getIntent().getBooleanExtra("isDreamTeam", false);
-
-
-
-        mFPSTextureView = (FPSTextureView) findViewById(R.id.animation_texture_view);
         stage = (RelativeLayout) findViewById(R.id.stage);
         players = new HashMap<>();
+        params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        imageButton = (Button) findViewById(R.id.imageButton);
 
-        mFPSTextureView.addChild(mSparkContainer).addChild(mMainContainer);
-
-        frameWidth = Util.convertDpToPixel(22f, this);
-        frameHeight = Util.convertDpToPixel(36f, this);
-
-        baseSpriteBitmapB = BitmapFactory.decodeResource(getResources(), R.drawable.sprite);
-        spriteBitmapB = Bitmap.createScaledBitmap(baseSpriteBitmapB,
-                (int) Util.convertDpToPixel(600f, this),
-                (int) Util.convertDpToPixel(36f, this),
-                false);
-
-        spriteSheetDrawer = new SpriteSheetDrawer(spriteBitmapB, frameWidth,
-                frameHeight, 25, 25)
-                .spriteLoop(true);
-
-
-        for (DisplayObject a : buildPlayers442()) {
-            mMainContainer.addChild(a);
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setSubtitle("4-2-4");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-    }
 
-    private void endPlayerAnimation(final DisplayObject player, final Integer playerId, final String playerName) {
-        runOnUiThread(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                stageHeight = stage.getMeasuredHeight();
+                imageButton.setTag(1);
+                primordialX = imageButton.getX();
+                players.put(imageButton, null);
 
-                mMainContainer.removeChild(player);
+                //goalkeeper
+                ObjectAnimator anim = ObjectAnimator.ofFloat(imageButton, "y", 40);
+                anim.setDuration(3000);
+                anim.start();
 
-                lparams = new RelativeLayout.LayoutParams(23, RelativeLayout.LayoutParams.WRAP_CONTENT);
-                float x = player.getAnimParameter().x;
-                float y = player.getAnimParameter().y;
-                Button img = new Button(DreamTeam.this);
-                img.setBackground(null);
+                createPlayer(primordialX / 4, stageHeight, 2, stageHeight / 7, 3000);
+                createPlayer((float) (primordialX / 1.8), stageHeight, 3, stageHeight / 6, 3000);
+                createPlayer((float) (primordialX * 1.1), stageHeight, 4, stageHeight / 6, 3000);
+                createPlayer((float) (primordialX * 1.4), stageHeight, 5, stageHeight / 7, 3000);
 
-                Drawable top = getResources().getDrawable(R.drawable.player2);
-                img.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
-                img.setTag(playerId);
-                img.setLayoutParams(lparams);
-                img.setX(x);
-                img.setY(y);
-                img.setOnClickListener(DreamTeam.this);
-
-
-                TextView t1 = new TextView(DreamTeam.this);
-                t1.setTextSize(8);
-                t1.setGravity(Gravity.CENTER);
-                t1.setTextColor(ContextCompat.getColor(DreamTeam.this, android.R.color.black));
-
-                t1.setText(String.format(Locale.ENGLISH, playerName, playerId + 1));
-
-
-                lparams = new RelativeLayout.LayoutParams(230, LinearLayout.LayoutParams.WRAP_CONTENT);
-                t1.setLayoutParams(lparams);
-                t1.setX(x - 100);
-                t1.setY(y);
-
-
-                players.put(img, t1);
-                stage.addView(img);
-                stage.addView(t1);
-
-            }
-        });
-    }
-
-
-    /**
-     * Formation 4 - 4 - 2
-     *
-     * @return: sprites
-     */
-    private List<DisplayObject> buildPlayers442() {
-        List<DisplayObject> list = new ArrayList<>();
-        int windowH = UIUtil.getWindowHeight(this);
-        int windowW = UIUtil.getWindowWidth(this);
-
-        List<String> listNames = new ArrayList<>();
-
-        if (isDreamTeam) {
-            listNames = Arrays.asList(getResources().getStringArray(R.array.players_manchester_united));
-        } else {
-            for (int i = 0; i < 11; i++) {
-                listNames.add(String.format(Locale.ENGLISH, "Player %d", i));
-            }
-        }
-
-
-        //GOALKEEPER
-        list.add(createPlayer(2000, windowW / 2, 10, 0, listNames.get(0)));
-
-        //BACK
-        list.add(createPlayer(2000, windowW / 8, windowH / 7, 1, listNames.get(1)));
-        list.add(createPlayer(2000, (float) (windowW / 3), windowH / 6, 2, listNames.get(2)));
-
-        list.add(createPlayer(2000, (float) (windowW / 1.5), windowH / 6, 3, listNames.get(3)));
-        list.add(createPlayer(2000, (float) (windowW / 1.2), windowH / 7, 4, listNames.get(4)));
-
-        //Medium
-        list.add(createPlayer(2000, windowW / 8, (float) (windowH / 2.5), 5, listNames.get(5)));
-        list.add(createPlayer(2000, windowW / 3, (float) (windowH / 3), 6, listNames.get(6)));
-        list.add(createPlayer(2000, (float) (windowW / 1.5), (float) (windowH / 3), 7, listNames.get(7)));
-        list.add(createPlayer(2000, (float) (windowW / 1.2), (float) (windowH / 2.5), 8, listNames.get(8)));
-
-
-        //FRONT
-        list.add(createPlayer(2000, (float) (windowW / 3), (float) (windowH / 1.7), 9, listNames.get(9)));
-        list.add(createPlayer(2000, (float) (windowW / 1.5), (float) (windowH / 1.7), 10, listNames.get(10)));
-
-
-        return list;
-    }
-
-    private DisplayObject createPlayer(long anim, float x, float y, final Integer playerId, final String playerName) {
-        final DisplayObject displayObject = new DisplayObject();
-        displayObject
-                .with(spriteSheetDrawer)
-                .tween()
-                .tweenLoop(false)
-                .to(anim, x, y)
-                .call(new AnimCallBack() {
+                new Handler().postDelayed(new Runnable() {
                     @Override
-                    public void call() {
-                        endPlayerAnimation(displayObject, playerId, playerName);
+                    public void run() {
+                        createPlayer(primordialX / 4, stageHeight - 100, 6, stageHeight / 2, 3000);
+                        createPlayer((float) (primordialX / 1.8), stageHeight - 100, 7, stageHeight / 3, 3000);
+                        createPlayer((float) (primordialX * 1.1), stageHeight - 100, 8, stageHeight / 3, 3000);
+                        createPlayer((float) (primordialX * 1.4), stageHeight - 100, 9, stageHeight / 2, 3000);
                     }
-                })
-                .end();
-        return displayObject;
+                }, 2000);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        createPlayer((float) (primordialX / 1.8), stageHeight - 100, 10, (int) (stageHeight / 1.8), 3000);
+                        createPlayer((float) (primordialX * 1.1), stageHeight - 100, 10, (int) (stageHeight / 1.8), 3000);
+                    }
+                }, 2000);
+
+
+            }
+        }, 1000);
+
+
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        mFPSTextureView.tickStart();
-        getSupportActionBar().setSubtitle("4-4-2");
-        if (getSupportActionBar() != null){
-            getSupportActionBar().setTitle(team);
-        }
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mFPSTextureView.tickStop();
-    }
-
-    @Override
-    public void onClick(View v) {
-        playerSelected = (Button) v;
-
-        if (players.get(playerSelected).getText().toString().contains("Player")) {
-            Intent playerProfile = new Intent(DreamTeam.this, PlayersActivity.class);
-            playerProfile.putExtra("bt", players.get(playerSelected).getText().toString());
-            startActivityForResult(playerProfile, 1);
-        } else {
-            //// TODO: 11/11/2016 show a user profile
-            String playerName = players.get(playerSelected).getText().toString();
-            MySingleton.getInstance().showToast(playerName);
-        }
-
+    public void onClick(View view) {
+        playerSelected = (Button) view;
+        Intent playerProfile = new Intent(DreamTeam.this, PlayersActivity.class);
+        playerProfile.putExtra("bt", "Player " + playerSelected.getTag());
+        startActivityForResult(playerProfile, 1);
     }
 
     @Override
@@ -235,28 +121,56 @@ public class DreamTeam extends AppCompatActivity implements View.OnClickListener
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
             String player = data.getStringExtra("player");
-            String bt = data.getStringExtra("bt");
-            players.get(playerSelected).setText(player);
+            playerSelected.startAnimation(AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_in));
+            float x = playerSelected.getX();
+            float y = playerSelected.getY();
+            Log.i("app", "onActivityResult: x: " + x + " y: " + y);
 
-        } else if (requestCode == 2 && resultCode == RESULT_OK) {
-            //finish();
 
+
+
+
+            if (players.get(playerSelected) == null) {
+                TextView t1 = new TextView(DreamTeam.this);
+                t1.setTextSize(10);
+                t1.setGravity(Gravity.CENTER);
+                t1.setTextColor(ContextCompat.getColor(DreamTeam.this, android.R.color.black));
+                t1.setText(player);
+                t1.setLayoutParams(params);
+                t1.setX(x);
+                t1.setY(y - 10);
+                stage.addView(t1);
+                players.put(playerSelected, t1);
+            } else {
+                players.get(playerSelected).setText(player);
+            }
 
         }
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
+    }
 
-        switch (item.getItemId()) {
+    private void createPlayer(float x, float y, final Integer playerId, int animToY, long animDelay) {
 
-            case android.R.id.home:
-                this.finish();
-                return true;
+        final Button img = new Button(this);
+        img.setBackground(null);
 
-        }
-        return false;
+        Drawable top = ContextCompat.getDrawable(this, R.drawable.tshirt);
+        img.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+        img.setTag(playerId);
+        img.setLayoutParams(params);
+        img.setX(x);
+        img.setY(y);
+        img.setOnClickListener(this);
 
+        ObjectAnimator anim = ObjectAnimator.ofFloat(img, "y", animToY);
+        anim.setDuration(animDelay);
+        stage.addView(img);
+        anim.start();
+        players.put(img, null);
     }
 }

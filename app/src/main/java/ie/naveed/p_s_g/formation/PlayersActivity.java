@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -52,7 +53,6 @@ public class PlayersActivity extends AppCompatActivity {
                     Bundle conData = new Bundle();
                     conData.putString("player", aPlayer.getName());
                     conData.putString("bt", bt);
-
                     Intent intent = new Intent();
                     intent.putExtras(conData);
                     setResult(RESULT_OK, intent);
@@ -66,3 +66,4 @@ public class PlayersActivity extends AppCompatActivity {
 
     }
 }
+
