@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="fill_vertical"
+    android:background="@drawable/field_football"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="140dp"
+        android:orientation="horizontal"
+        android:paddingTop="30dip">
+
+        <Button
+            android:id="@+id/p1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="50dip"
+            android:paddingBottom="5dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="10dp"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="0dp"
+            android:minWidth="55dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="10dp"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="50dip"
+            android:paddingBottom="5dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="10dp"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="50dip"
+            android:paddingBottom="5dip"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/p5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="60dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="25dip"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="25dip"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="55dip"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/p8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="55dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="25dip"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="55dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="25dip"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="55dip"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/emptySpace"
+            android:paddingBottom="20dip"
+            android:paddingRight="25dip"
+            android:paddingTop="20dip"
+            android:src="@null" />
+
+        <Button
+            android:id="@+id/p10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:contentDescription=""
+            android:drawableTop="@drawable/player2"
+            android:lines="2"
+            android:maxWidth="20dp"
+            android:minWidth="55dip"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

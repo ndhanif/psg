@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="players">
+        <item>Amer Al Dossari</item>
+        <item>Abdul Ghafoor Murad</item>
+        <item>Meshal Mubarak</item>
+        <item>Khalil Sharif</item>
+        <item>Sayed Mohamed Adnan </item>
+        <item>Abdulla Afifa</item>
+        <item>Abdulaziz Al Sulaiti</item>
+        <item>Mohammed Al Aqib</item>
+        <item>Mojtaba Jabbari</item>
+        <item>Meshal Abdullah</item>
+        <item>Farri Agri</item>
+        <item>Player 12</item>
+        <item>Player 13</item>
+        <item>Player 14</item>
+        <item>Player 15</item>
+    </string-array>
+
+    <string-array name="players_manchester_united">
+        <item>David de Gea</item>
+        <item>Eric Bailly</item>
+        <item>Phil Jones</item>
+        <item>Marcos Rojo</item>
+        <item>Paul Pogba</item>
+        <item>Memphis Depay</item>
+        <item>Juan Mata</item>
+        <item>Zlatan Ibrahimović</item>
+        <item>Wayne Rooney</item>
+        <item>Anthony Martial</item>
+        <item>Chris Smalling</item>
+        <item>Jesse Lingard</item>
+        <item>Ashley Young</item>
+        <item>Marcus Rashford</item>
+        <item>Sam Johnstone</item>
+    </string-array>
+
+    <string-array name="formations">
+        <item>4-3-3</item>
+        <item>4-4-2</item>
+        <item>4-2-4</item>
+        <item>3-6-1</item>
+    </string-array>
+
+    <string-array name="menu1">
+        <item>Please choose</item>
+        <item>Sports</item>
+        <item>Dream Team</item>
+    </string-array>
+
+    <string-array name="menufootball">
+        <item>Please choose</item>
+        <item>Qatar Star League</item>
+        <item>Arabian Gulf League</item>
+        <item>Indian Super League</item>
+        <item>Banifica</item>
+
+    </string-array>
+
+    <string-array name="menucricket">
+        <item>Please choose</item>
+        <item>Indian Premier League</item>
+        <item>ICC Cricket Worlcup</item>
+
+    </string-array>
+
+    <string-array name="menurugby">
+        <item>Please choose</item>
+        <item>Ireland</item>
+
+    </string-array>
+
+    <string-array name="menutennis">
+        <item>Please choose</item>
+        <item> </item>
+        <item>Not available Yet</item>
+
+    </string-array>
+
+    <string-array name="menugulf">
+        <item>Please choose</item>
+        <item>Not available</item>
+    </string-array>
+
+    <string-array name="menudreamteam">
+        <item>Please choose</item>
+        <item>Manchester United</item>
+    </string-array>
+
+
+
+</resources>

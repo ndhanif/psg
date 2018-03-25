@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/Goals"
+            android:icon="@drawable/fbicon"
+            android:title="Goals" />
+        <item
+            android:id="@+id/Saves"
+            android:icon="@drawable/saves"
+            android:title="Saves" />
+        <item
+            android:id="@+id/Free_Kicks"
+            android:icon="@drawable/freekick"
+            android:title="Free Kicks" />
+        <item
+            android:id="@+id/Lineout"
+            android:icon="@drawable/lineout"
+            android:title="Lineout" />
+        <item
+            android:id="@+id/Shots_Blocked"
+            android:icon="@drawable/goals"
+            android:title="Shots Blocked" />
+        <item
+            android:id="@+id/Interceptions"
+            android:icon="@drawable/inter"
+            android:title="Interceptions" />
+    </group>
+
+
+
+</menu>
